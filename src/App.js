@@ -3,9 +3,10 @@ import Feed from './component/Feed';
 import Login from './Login';
 import Navbar from './component/Navbar';
 import Sidebar from './component/Sidebar';
+import { useStateValue } from './component/StateProvider';
 
 function App() {
-  const user = null;
+  const [{user}, dispatch] = useStateValue();
   return (
     <div className="app">
       {!user ? ( <Login /> ) : 
