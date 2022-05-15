@@ -5,10 +5,21 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import SearchIcon from '@mui/icons-material/Search';
 import "./Giphy.css";
+import { connect } from 'react-redux';
+import { getSearchResults } from './Search/action';
 
-const Giphy = () => {
+const gifSearch = async (event, props) => {
+    if (event.target.value.trim() !== '') {
+        props.getSearchResults(event.target.value);
+    }
+}
+
+const mapDispatchToProps = {
+    getSearchResults
+};
+
+const Giphy = (props) => {
     const [data, setData] = useState([]);
-    const [search, setSearch] = useState("");
     useEffect(() => {
       const fetchData = async () => {
           const results = await axios("https://api.giphy.com/v1/gifs/trending", {
@@ -21,11 +32,7 @@ const Giphy = () => {
       fetchData()
     });
     
-    const gifSearch = async (event) => {
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=67BmK5Jmo0xgeclA5MpQo8ehcOIqmyUs&q=${event.target.value}`
-        const data = await axios.get(url);
-        setSearch(data.data.data);
-    }
+    
     
   return (
     <div className='container_gifs'>
@@ -38,8 +45,7 @@ const Giphy = () => {
                 <input
                     type='text'
                     placeholder='Search'
-                    value={search}
-                    onChange={gifSearch} />
+                    onChange={(event) => gifSearch(event, props)} />
             </div>
             <div className="gif_display">
                 <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
@@ -60,4 +66,4 @@ const Giphy = () => {
   )
 }
 
-export default Giphy
+export default connect(null, mapDispatchToProps)(Giphy);
