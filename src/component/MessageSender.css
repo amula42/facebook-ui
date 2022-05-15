@@ -38,7 +38,7 @@
     display: none;
 }
 
-.messageSender_input {
+.messageSender input {
     flex: 1;
 }
 

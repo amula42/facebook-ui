@@ -5,15 +5,17 @@ import HomeIcon from '@mui/icons-material/Home';
 import FlagIcon from '@mui/icons-material/Flag';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import IconButton from '@mui/material/IconButton';
 import AppsIcon from '@mui/icons-material/Apps';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import { useStateValue } from './StateProvider';
+import { Avatar } from '@mui/material';
 
 const Navbar = () => {
+    const [{user}] = useStateValue();
   return (
     <div className='header'>
         <div className='header_left'>
@@ -42,8 +44,8 @@ const Navbar = () => {
         </div>
         <div className='header_right'>
             <div className='header_info'>
-                <AccountCircleIcon />
-                <h4>Akash</h4>
+                <Avatar src={user.photoURL} />
+                <h4>{user.displayName}</h4>
             </div>
 
             <IconButton>
