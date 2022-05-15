@@ -2,16 +2,22 @@ import { Avatar } from '@mui/material'
 import React, { useState } from 'react';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
-import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import GifBoxIcon from '@mui/icons-material/GifBox';
+import IconButton from '@mui/material/IconButton';
 import "./MessageSender.css";
 import { useStateValue } from './StateProvider';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import db from '../firebase';
+import Modal from '@mui/material/Modal';
+import Giphy from './Giphy';
 
 const MessageSender = () => {
     const [{user}] = useStateValue();
     const [input, setInput] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -56,10 +62,18 @@ const MessageSender = () => {
                 <PhotoLibraryIcon style={{color: "green"}} />
                 <h3>Photo/Video</h3>
             </div>
-            <div className="messageSender_option">
-                <InsertEmoticonIcon style={{color: "orange"}} />
-                <h3>Feeling/Activity</h3>
-            </div>
+            <IconButton className="messageSender_option" onClick={handleOpen}>
+                <GifBoxIcon style={{color: "#2abba7"}} />
+                <h3>GIF</h3>
+            </IconButton>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Giphy />
+            </Modal>
         </div>
     </div>
   )
