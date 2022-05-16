@@ -5,21 +5,10 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import SearchIcon from '@mui/icons-material/Search';
 import "./Giphy.css";
-import { connect } from 'react-redux';
-import { getSearchResults } from './Search/action';
 
-const gifSearch = async (event, props) => {
-    if (event.target.value.trim() !== '') {
-        props.getSearchResults(event.target.value);
-    }
-}
-
-const mapDispatchToProps = {
-    getSearchResults
-};
-
-const Giphy = (props) => {
+const Giphy = () => {
     const [data, setData] = useState([]);
+    const [gif, setGif] = useState("");
     useEffect(() => {
       const fetchData = async () => {
           const results = await axios("https://api.giphy.com/v1/gifs/trending", {
@@ -30,8 +19,21 @@ const Giphy = (props) => {
           setData(results.data.data);
       }
       fetchData()
-    });
+    }, []);
+
+    const gifSearch = (e) => {
+        setGif(e.target.value);
+    }
     
+    const searchGif = async (e) => {
+        e.preventDefault();
+        try {
+            const sresults = await axios(`https://api.giphy.com/v1/gifs/search?api_key=67BmK5Jmo0xgeclA5MpQo8ehcOIqmyUs&q=${gif}`)
+            setData(sresults.data.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     
     
   return (
@@ -42,10 +44,14 @@ const Giphy = (props) => {
             </div>
             <div className='gif_search'>
                 <SearchIcon />
-                <input
-                    type='text'
-                    placeholder='Search'
-                    onChange={(event) => gifSearch(event, props)} />
+                <form>
+                    <input
+                        type='text'
+                        placeholder='Search'
+                        value={gif}
+                        onChange={gifSearch} />
+                    <button onClick={searchGif} type="submit">search</button>
+                </form>
             </div>
             <div className="gif_display">
                 <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
@@ -65,5 +71,8 @@ const Giphy = (props) => {
     </div>
   )
 }
+// const clickGif = (url) => {
+//     console.log(url);
+// }
 
-export default connect(null, mapDispatchToProps)(Giphy);
+export default Giphy;

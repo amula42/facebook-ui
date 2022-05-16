@@ -36,3 +36,7 @@
     font-size: large;
     font-weight: 700;
 }
+
+.gif_search form button {
+    display: none;
+}

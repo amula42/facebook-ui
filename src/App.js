@@ -6,7 +6,7 @@ import Sidebar from './component/Sidebar';
 import { useStateValue } from './component/StateProvider';
 
 function App() {
-  const [{user}, dispatch] = useStateValue();
+  const [{user}] = useStateValue();
   return (
     <div className="app">
       {!user ? ( <Login /> ) : 

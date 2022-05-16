@@ -7,7 +7,9 @@ import { actionTypes } from "./component/reducer";
 import { useStateValue } from "./component/StateProvider";
 
 const Login = () => {
+    /* eslint-disable */
     const [state, dispatch] = useStateValue();
+    /* eslint-enable */
     const signIn = () => {
         
         signInWithPopup(auth, provider)
