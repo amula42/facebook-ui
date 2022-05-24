@@ -1,15 +1,15 @@
 import './App.css';
 import Feed from './component/Feed';
-// import Login from './Login';
+import Login from './Login';
 import Navbar from './component/Navbar';
 import Sidebar from './component/Sidebar';
-// import { useStateValue } from './component/StateProvider';
+import { useStateValue } from './component/StateProvider';
 
 function App() {
-  // const [{user}] = useStateValue();
+  const [{user}] = useStateValue();
   return (
     <div className="app">
-      {/* {!user ? ( <Login /> ) :  */}
+      {!user ? ( <Login /> ) : 
       <>
       <Navbar />
 
@@ -18,7 +18,7 @@ function App() {
         <Feed />
       </div>
       </>
-      {/* } */}
+      }
     </div>
   );
 }

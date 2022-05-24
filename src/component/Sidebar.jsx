@@ -7,13 +7,13 @@ import StoreIcon from '@mui/icons-material/Store';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FlagIcon from '@mui/icons-material/Flag';
-// import { useStateValue } from './StateProvider';
+import { useStateValue } from './StateProvider';
 
 const Sidebar = () => {
-  // const [{user}] = useStateValue();
+  const [{user}] = useStateValue();
   return (
     <div className='sidebar'>
-        {/* <SidebarRow src={user.photoURL} title={user.displayName} /> */}
+        <SidebarRow src={user.photoURL} title={user.displayName} />
         <SidebarRow Icon={PeopleIcon} title="Friends" />
         <SidebarRow Icon={GroupsIcon} title="Groups" />
         <SidebarRow Icon={StoreIcon} title="Marketplace" />
