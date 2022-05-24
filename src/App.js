@@ -9,7 +9,7 @@ function App() {
   const [{user}] = useStateValue();
   return (
     <div className="app">
-      {!user ? ( <Login /> ) : 
+      {/* {!user ? ( <Login /> ) :  */}
       <>
       <Navbar />
 
@@ -17,7 +17,8 @@ function App() {
         <Sidebar />
         <Feed />
       </div>
-      </>}
+      </>
+      {/* } */}
     </div>
   );
 }
