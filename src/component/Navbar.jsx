@@ -11,11 +11,11 @@ import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-import { useStateValue } from './StateProvider';
+// import { useStateValue } from './StateProvider';
 import { Avatar } from '@mui/material';
 
 const Navbar = () => {
-    const [{user}] = useStateValue();
+    // const [{user}] = useStateValue();
   return (
     <div className='header'>
         <div className='header_left'>
@@ -44,8 +44,8 @@ const Navbar = () => {
         </div>
         <div className='header_right'>
             <div className='header_info'>
-                <Avatar src={user.photoURL} />
-                <h4>{user.displayName}</h4>
+                <Avatar/>
+                <h4>Welcome</h4>
             </div>
 
             <IconButton>
