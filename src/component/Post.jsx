@@ -12,10 +12,13 @@ const Post = ({ profilePic, image, username, timestamp, message }) => {
   return (
     <div className='post'>
         <div className="post_top">
-            <Avatar src={profilePic}
+            {/* <Avatar src={profilePic}
+            className="postAvatar" /> */}
+            <Avatar src="https://static.toiimg.com/photo/49892276.cms"
             className="postAvatar" />
             <div className="post_topInfo">
-                <h3> {username} </h3>
+                {/* <h3> {username} </h3> */}
+                <h3> User </h3>
                 <p>{new Date(timestamp?.toDate()).toUTCString()}</p>
             </div>
         </div>

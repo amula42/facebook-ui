@@ -37,13 +37,15 @@ const MessageSender = () => {
   return (
     <div className='messageSender'>
         <div className='messageSender_top'>
-            <Avatar src={user.photoURL} />
+            <Avatar src="https://static.toiimg.com/photo/49892276.cms" />
+            {/* <Avatar src={user.photoURL} /> */}
             <form>
                 <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     className='meassageSender_input'
-                    placeholder={`What's on your mind, ${user.displayName}?`} />
+                    // placeholder={`What's on your mind, ${user.displayName}?`}
+                    placeholder={`What's on your mind, User?`} />
                 <input
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
