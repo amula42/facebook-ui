@@ -57,11 +57,12 @@ const Giphy = () => {
                 <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
                     <ImageList variant="masonry" cols={2} gap={8}>
                         {data.map((el) => (
-                        <ImageListItem key={el.id}>
+                        <ImageListItem >
+                            <button onClick={clickGif} style={{border:"none", cursor:"pointer"}} >
                             <img
                             src={el.images.fixed_height.url}
                             alt=""
-                            />
+                            /></button>
                         </ImageListItem>
                         ))}
                     </ImageList>
@@ -71,8 +72,8 @@ const Giphy = () => {
     </div>
   )
 }
-// const clickGif = (url) => {
-//     console.log(url);
-// }
+const clickGif = () => {
+    alert("clicked GIF");
+}
 
 export default Giphy;

@@ -11,9 +11,6 @@ const Feed = () => {
   useEffect(() => {
     const colRef = collection(db, "posts");
     const q = query(colRef, orderBy('timestamp', 'desc'));
-    // db.collection('posts').onSnapshot(snapshot => (
-      // setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data()})))
-    // ));
     const unsub = onSnapshot(q, (snapshot) => {
       setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data()})))
     });
